@@ -1,0 +1,18 @@
+%Correlation Dimension
+%Skyler Szot
+
+clear all;
+close all;
+
+[x,y,z] = lorenz(28, 10, 8/3); %generate lorenz chaotic time series
+x = downsample(x,3);
+y = downsample(y,3);
+z = downsample(z,3);
+%plot3(x,y,z); %plot
+C = [];
+
+for i = 1:100   %for diffrent r thresholds
+    C = [C get_correlation_integral(x,i,30)]; %get correlation coefficient
+end
+
+i = [1:100]
